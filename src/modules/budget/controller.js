@@ -5,17 +5,17 @@ const budgetControllers = {};
 
 budgetControllers.create = async (req, res, next) => {
   try {
-    const validatedRequest = validators.create(req);
+    const validatedRequest = validators.createBudget(req);
 
-    const data = await services.create({
+    const data = await services.createBudget({
       budget: validatedRequest.budget,
       limit: validatedRequest.limit,
-      id: validatedRequest.id,
+      userId: validatedRequest.userId,
     });
 
     next({
       result: data,
-      ...constants.create.messages.BCRS0001,
+      ...constants.createBudget.messages.BCRS0001,
     });
   } catch (err) {
     next(JSON.parse(err));
@@ -24,17 +24,17 @@ budgetControllers.create = async (req, res, next) => {
 // sns service
 budgetControllers.update = async (req, res, next) => {
   try {
-    const validatedRequest = validators.update(req);
+    const validatedRequest = validators.updateBudget(req);
 
-    const data = await services.update({
+    const data = await services.updateBudget({
       budget: validatedRequest.budget,
-      budget_limit: validatedRequest.budget_limit,
-      user_id: validatedRequest.user_id,
+      budgetLimit: validatedRequest.limit,
+      user_id: validatedRequest.userId,
     });
 
     next({
       result: data,
-      ...constants.update.messages.BUPS0001,
+      ...constants.updateBudget.messages.BUPS0001,
     });
   } catch (err) {
     next(JSON.parse(err));
@@ -43,11 +43,11 @@ budgetControllers.update = async (req, res, next) => {
 
 budgetControllers.get = async (req, res, next) => {
   try {
-    const data = await services.get();
+    const data = await services.getBudget();
 
     next({
       result: data,
-      ...constants.get.messages.BGTS0001,
+      ...constants.getBudget.messages.BGTS0001,
     });
   } catch (err) {
     next(JSON.parse(err));

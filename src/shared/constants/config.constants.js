@@ -6,6 +6,8 @@ const config = {
     port: process.env.APP_PORT,
     userJWTSecret: process.env.APP_USER_JWT_SECRET,
     userJWTExpiresIn: process.env.APP_USER_JWT_EXPIRESIN,
+    emailId: process.env.EMAIL_ID,
+    emailPassword: process.env.EMAIL_PASSWORD,
   },
   database: {
     host: process.env.DATABASE_HOST,

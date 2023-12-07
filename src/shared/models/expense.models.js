@@ -5,15 +5,15 @@ const expenseModels = {};
 
 // @model-name: create
 // @model-desc: create a new expense
-expenseModels.create = async ({ reason, amount, id, isValid }) => {
+expenseModels.create = async ({ reason, amount, userId, isValid }) => {
   const result = await new sharedServices.mysqlServices()
     .insert(
       sharedConstants.dbTableNames.expense,
       sharedServices.mysqlHelperServices.parseInsertValues({
         reason: reason,
         amount: amount,
-        user_id: id,
-        isValid,
+        user_id: userId,
+        isValid: isValid,
       })
     )
     .build();
@@ -30,22 +30,32 @@ expenseModels.read = async (whereParams) => {
     where.push(`email="${whereParams.email}"`);
   }
 
-  if (whereParams.user_id) {
-    where.push(`user_id=${whereParams.user_id}`);
+  if (whereParams.userId) {
+    where.push(`user_id=${whereParams.userId}`);
   }
 
-  if (whereParams.isValid == 0) {
+  if (whereParams.isValid) {
     where.push(`isValid=${whereParams.isValid}`);
+  }
+
+  if (whereParams.currentDate) {
+    where.push(`created_at='${whereParams.currentDate}'`);
+  }
+
+  if (whereParams.expenseId) {
+    where.push(`id=${whereParams.expenseId}`);
   }
 
   let result = new sharedServices.mysqlServices()
     .select(
       `
-            id,
-            reason,
-            amount,
-            user_id,
-            isValid
+            id AS id,
+            reason AS reason,
+            amount AS amount,
+            user_id AS userId,
+            isValid AS isValid,
+            created_at AS createdAt,
+            updated_at AS updatedAt
             `
     )
     .from(sharedConstants.dbTableNames.expense);
@@ -64,12 +74,12 @@ expenseModels.read = async (whereParams) => {
 expenseModels.update = async (updateParams, whereParams) => {
   const where = [];
 
-  if (whereParams.id) {
-    where.push(`id=${whereParams.id}`);
+  if (whereParams.expenseId) {
+    where.push(`id=${whereParams.expenseId}`);
   }
 
-  if (whereParams.user_id) {
-    where.push(`user_id=${whereParams.user_id}`);
+  if (whereParams.userId) {
+    where.push(`user_id=${whereParams.userId}`);
   }
 
   const result = await new sharedServices.mysqlServices()

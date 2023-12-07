@@ -1,74 +1,91 @@
-const services = require("./services");
-const constants = require("./constants");
-const validators = require("./validators");
+const expenseServices = require("./services");
+const expenseConstants = require("./constants");
+const expenseValidators = require("./validators");
 const expenseControllers = {};
 
-expenseControllers.create = async (req, res, next) => {
+expenseControllers.createExpense = async (req, res, next) => {
   try {
-    const validatedRequest = validators.create(req);
+    const validatedRequest = expenseValidators.createExpense(req);
 
-    const data = await services.create({
+    const data = await expenseServices.createExpense({
       reason: validatedRequest.reason,
       amount: validatedRequest.amount,
-      id: validatedRequest.id,
+      userId: validatedRequest.userId,
     });
 
     next({
       result: data,
-      ...constants.create.messages.ECRS0001,
+      ...expenseConstants.createExpense.messages.ECRS0001,
     });
   } catch (err) {
-    next(JSON.stringify(err.message));
+    next(JSON.parse(err.message));
   }
 };
 
-expenseControllers.update = async (req, res, next) => {
+expenseControllers.updateExpense = async (req, res, next) => {
   try {
-    const validatedRequest = validators.update(req);
+    const validatedRequest = expenseValidators.updateExpense(req);
 
-    const data = await services.update({
+    const data = await expenseServices.updateExpense({
       reason: validatedRequest.reason,
       amount: validatedRequest.amount,
-      id: validatedRequest.id,
+      expenseId: validatedRequest.expenseId,
     });
 
     next({
       result: data,
-      ...constants.update.messages.EUPS0001,
+      ...expenseConstants.updateExpense.messages.EUPS0001,
     });
   } catch (err) {
     next(JSON.parse(err));
   }
 };
 
-expenseControllers.resetAll = async (req, res, next) => {
+expenseControllers.resetAllExpense = async (req, res, next) => {
   try {
-    const validatedRequest = validators.resetAll(req);
+    const validatedRequest = expenseValidators.resetAllExpense(req);
 
-    const data = await services.resetAll({
-      user_id: validatedRequest.user_id,
+    const data = await expenseServices.resetAllExpense({
+      user_id: validatedRequest.userId,
     });
 
     next({
       result: data,
-      ...constants.resetAll.messages.EDLS0001,
+      ...expenseConstants.resetAllExpense.messages.EDLS0001,
     });
   } catch (err) {
     next(JSON.parse(err));
   }
 };
 
-expenseControllers.get = async (req, res, next) => {
+expenseControllers.getExpense = async (req, res, next) => {
   try {
-    const validatedRequest = validators.get(req);
+    const validatedRequest = expenseValidators.getExpense(req);
 
-    const data = await services.get({
-      user_id: validatedRequest.id,
+    const data = await expenseServices.getExpense({
+      user_id: validatedRequest.userId,
     });
 
     next({
       result: data,
-      ...constants.get.messages.EGTS0001,
+      ...expenseConstants.getExpense.messages.EGTS0001,
+    });
+  } catch (err) {
+    next(JSON.parse(err));
+  }
+};
+
+expenseControllers.deleteExpense = async (req, res, next) => {
+  try {
+    const validatedRequest = expenseValidators.deleteExpense(req);
+
+    const data = await expenseServices.deleteExpense({
+      expenseId: validatedRequest.expenseId,
+    });
+
+    next({
+      result: data,
+      ...expenseConstants.deleteExpense.messages.EDES0001,
     });
   } catch (err) {
     next(JSON.parse(err));

@@ -1,9 +1,9 @@
-const createValidators = require("./create.validators");
-const updateValidators = require("./update.validators");
+const createBudgetValidators = require("./createBudget.validators");
+const updateBudgetValidators = require("./updateBudget.validators");
 
 const budgetModuleValidators = {
-  create: createValidators,
-  update: updateValidators,
+  createBudget: createBudgetValidators,
+  updateBudget: updateBudgetValidators,
 };
 
 module.exports = budgetModuleValidators;

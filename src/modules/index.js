@@ -1,9 +1,10 @@
 const express = require("express");
 const appModules = express.Router();
-const authMiddleware = require("shared/middlewares/auth.middlewares");
-const authModules = require("./auth_module/routes");
+const { authMiddleware } = require("shared/middlewares");
+const authModules = require("./auth/routes");
 const expenseModules = require("./expense/routes");
 const budgetModules = require("./budget/routes");
+const cronModules = require("./cron/routes");
 
 // module_name: auth
 // module_route: /auth
@@ -22,5 +23,11 @@ appModules.use("/expense", authMiddleware, expenseModules);
 // module_description:
 //      handles routes related to budget module
 appModules.use("/budget", authMiddleware, budgetModules);
+
+// module_name: cron
+// module_route: /cron
+// module_description:
+//      handles routes related to cron module
+appModules.use("/cron", cronModules);
 
 module.exports = appModules;

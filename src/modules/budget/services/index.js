@@ -1,11 +1,11 @@
-const createService = require("./create.services");
-const updateService = require("./udpate.services");
-const getService = require("./get.services");
+const updateBudgetServices = require("./udpateBudget.services");
+const createBudgetServices = require("./createBudget.services");
+const getBudgetServices = require("./getBudget.services");
 
 const budgetServicesModule = {
-  create: createService,
-  update: updateService,
-  get: getService,
+  createBudget: createBudgetServices,
+  updateBudget: updateBudgetServices,
+  getBudget: getBudgetServices,
 };
 
 module.exports = budgetServicesModule;

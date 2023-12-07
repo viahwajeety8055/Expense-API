@@ -3,28 +3,34 @@ const expenseModuleRouter = express.Router();
 
 const expenseControllers = require("./controllers");
 
-// route_name: create
-// route_path: /expense/create
+// route_name: /
+// route_path: expense/
 // route_description:
-//      route used to test create module
-expenseModuleRouter.post("/create", expenseControllers.create);
+//      route used to create expense
+expenseModuleRouter.post("/", expenseControllers.createExpense);
 
-// route_name: get
-// route_path: /expense/get
+// route_name: /
+// route_path: expense/
 // route_description:
-//      route used to test get module
-expenseModuleRouter.get("/get", expenseControllers.get);
+//      route used to get expense
+expenseModuleRouter.get("/", expenseControllers.getExpense);
 
-// route_name: update
-// route_path: /expense/update
+// route_name: /
+// route_path: expense/
 // route_description:
-//      route used to test update module
-expenseModuleRouter.put("/update", expenseControllers.update);
+//      route used to update expense
+expenseModuleRouter.patch("/", expenseControllers.updateExpense);
 
-// route_name: delete
-// route_path: /expense/delete
+// route_name: /
+// route_path: expense/:expenseId
 // route_description:
-//      route used to test delete module
-expenseModuleRouter.put("/resetAll", expenseControllers.resetAll);
+//      route used to delete expense
+expenseModuleRouter.patch("/:expenseId", expenseControllers.deleteExpense);
+
+// route_name: resetAll
+// route_path: expense/resetAll
+// route_description:
+//      route used to resetAll expense
+expenseModuleRouter.put("/", expenseControllers.resetAllExpense);
 
 module.exports = expenseModuleRouter;

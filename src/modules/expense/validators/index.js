@@ -1,13 +1,15 @@
-const createValidators = require("./create.validators");
-const updateValidators = require("./update.validators");
-const resetAllValidators = require("./resetAll.validators");
-const getValidators = require("./get.validators");
+const createExpenseValidators = require("./createExpense.validators");
+const updateExpenseValidators = require("./updateExpense.validators");
+const resetAllExpenseValidators = require("./resetAllExpense.validators");
+const getExpenseValidators = require("./getExpense.validators");
+const deleteExpenseValidators = require("./deleteExpense.validators");
 
 const expenseModuleValidators = {
-  create: createValidators,
-  update: updateValidators,
-  resetAll: resetAllValidators,
-  get: getValidators,
+  createExpense: createExpenseValidators,
+  updateExpense: updateExpenseValidators,
+  resetAllExpense: resetAllExpenseValidators,
+  getExpense: getExpenseValidators,
+  deleteExpense: deleteExpenseValidators,
 };
 
 module.exports = expenseModuleValidators;

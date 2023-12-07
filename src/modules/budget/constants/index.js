@@ -1,11 +1,11 @@
-const createConstants = require("./create.constants");
-const updateConstants = require("./update.constants");
-const getConstants = require("./get.constants");
+const createBudgetConstants = require("./createBudget.constants");
+const updateBudgetConstants = require("./updateBudget.constants");
+const getBudgetConstants = require("./getBudget.constants");
 
 const budgetModuleConstants = {
-  create: createConstants,
-  update: updateConstants,
-  get: getConstants,
+  createBudget: createBudgetConstants,
+  updateBudget: updateBudgetConstants,
+  getBudget: getBudgetConstants,
 };
 
 module.exports = budgetModuleConstants;

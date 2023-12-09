@@ -1,9 +1,28 @@
 const currentDate = new Date();
-const value = `${currentDate.getFullYear()}-${
-  currentDate.getMonth() + 1
-}-${currentDate.getDate()}`;
+const currentDay = currentDate.getDate(); // Get the day of the current date
+const currentMonth = currentDate.getMonth(); // Get the month of the current date (0-indexed)
+const currentYear = currentDate.getFullYear(); // Get the year of the current date
 
-const formattedCurrentDate = currentDate.toISOString().slice(0, 10);
+let prevMonthDay = currentDay;
+let prevMonth = currentMonth - 1;
+let prevYear = currentYear;
 
-console.log(formattedCurrentDate === value); // This will correctly compare the strings
-console.log(formattedCurrentDate); // This will print the formatted date string of currentDate
+if (prevMonth === -1) {
+  prevMonth = 11; // December
+  prevYear--;
+}
+
+// Format the current month's date (today's date)
+const formattedCurrentDate = `${currentYear}-${(currentMonth + 1)
+  .toString()
+  .padStart(2, "0")}-${currentDay.toString().padStart(2, "0")}`;
+
+// Format the previous month's date with the same day
+const formattedPreviousMonthDate = `${prevYear}-${(prevMonth + 1)
+  .toString()
+  .padStart(2, "0")}-${prevMonthDay.toString().padStart(2, "0")}`;
+
+console.log("Current month date:", formattedCurrentDate);
+console.log("Previous month date:", formattedPreviousMonthDate);
+
+console.log(formattedCurrentDate === currentDate);

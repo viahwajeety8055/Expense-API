@@ -64,6 +64,7 @@ expenseControllers.getExpense = async (req, res, next) => {
 
     const data = await expenseServices.getExpense({
       userId: validatedRequest.userId,
+      key: validatedRequest.key,
     });
 
     next({

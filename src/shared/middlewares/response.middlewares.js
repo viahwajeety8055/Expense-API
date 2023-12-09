@@ -7,7 +7,6 @@ const responseMiddleware = (parsedResponse, req, res, next) => {
       message: parsedResponse.message,
       result: parsedResponse.result,
     });
-    next(JSON.stringify(parsedResponse));
   } else if (
     parsedResponse.statusCode >= 400 &&
     parsedResponse.statusCode < 500
@@ -16,13 +15,11 @@ const responseMiddleware = (parsedResponse, req, res, next) => {
       code: parsedResponse.code,
       message: parsedResponse.message,
     });
-    next(JSON.stringify(parsedResponse));
   } else {
     res.status(500).send({
       code: "ERROR",
       message: "Internal Server Error",
     });
-    next(JSON.stringify(parsedResponse));
   }
 };
 

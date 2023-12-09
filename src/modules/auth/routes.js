@@ -19,6 +19,6 @@ authModuleRouter.post("/register", authControllers.register);
 // route_path: /auth/users
 // route_description:
 //      route used to test users module
-authModuleRouter.get("/users", authControllers.getAllUser);
+authModuleRouter.get("/users/:id?", authControllers.getAllUser);
 
 module.exports = authModuleRouter;

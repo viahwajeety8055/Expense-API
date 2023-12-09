@@ -3,7 +3,7 @@ const expensModuleConstants = require("../constants");
 const { error } = require("shared/services");
 
 module.exports = (req) => {
-  const { reason, amount } = req.body;
+  const { reason, amount } = req.query;
 
   if (sharedValidators.isRequired(reason)) {
     error.throw(expensModuleConstants.createExpense.errorMessages.ECRE0001);

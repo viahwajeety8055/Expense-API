@@ -4,6 +4,7 @@ const { error } = require("shared/services");
 
 module.exports = (req) => {
   const { expenseId } = req.params;
+  const { user_id } = req;
 
   if (sharedValidators.isRequired(expenseId)) {
     error.throw(expensModuleConstants.deleteExpense.errorMessages.EDEE0001);
@@ -11,5 +12,6 @@ module.exports = (req) => {
 
   return {
     expenseId,
+    userId: user_id,
   };
 };

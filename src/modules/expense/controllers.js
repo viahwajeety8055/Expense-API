@@ -63,7 +63,7 @@ expenseControllers.getExpense = async (req, res, next) => {
     const validatedRequest = expenseValidators.getExpense(req);
 
     const data = await expenseServices.getExpense({
-      user_id: validatedRequest.userId,
+      userId: validatedRequest.userId,
     });
 
     next({
@@ -81,6 +81,7 @@ expenseControllers.deleteExpense = async (req, res, next) => {
 
     const data = await expenseServices.deleteExpense({
       expenseId: validatedRequest.expenseId,
+      userId: validatedRequest.userId,
     });
 
     next({

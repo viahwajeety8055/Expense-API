@@ -9,11 +9,11 @@ const expenseControllers = require("./controllers");
 //      route used to create expense
 expenseModuleRouter.post("/", expenseControllers.createExpense);
 
-// route_name: /
-// route_path: expense/
+// route_name: /:id
+// route_path: expense/:id
 // route_description:
 //      route used to get expense
-expenseModuleRouter.get("/", expenseControllers.getExpense);
+expenseModuleRouter.get("/:id", expenseControllers.getExpense);
 
 // route_name: /
 // route_path: expense/
@@ -25,7 +25,10 @@ expenseModuleRouter.patch("/", expenseControllers.updateExpense);
 // route_path: expense/:expenseId
 // route_description:
 //      route used to delete expense
-expenseModuleRouter.patch("/:expenseId", expenseControllers.deleteExpense);
+expenseModuleRouter.patch(
+  "/deleteExpense/:expenseId",
+  expenseControllers.deleteExpense
+);
 
 // route_name: resetAll
 // route_path: expense/resetAll

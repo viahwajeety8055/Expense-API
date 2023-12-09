@@ -21,8 +21,8 @@ app.use(helmet());
 // enable CORS implementation
 app.use(
   cors({
-    origin: "http://localhost:3001",
-    methods: "GET,POST",
+    origin: "*",
+    methods: "GET,POST,PATCH,PUT,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,
   })
@@ -57,7 +57,7 @@ app.use(sharedMiddlewares.responseMiddleware);
 
 // define root route
 app.get("/", (req, res) => {
-  res.send("Centrum fintech api");
+  res.send("Expense dev API");
 });
 
 // start application server

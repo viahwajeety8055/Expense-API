@@ -29,6 +29,10 @@ userModels.read = async (whereParams) => {
     where.push(`email="${whereParams.email}"`);
   }
 
+  if (whereParams.id) {
+    where.push(`id = ${whereParams.id}`);
+  }
+
   let result = new sharedServices.mysqlServices()
     .select(
       `

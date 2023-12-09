@@ -19,6 +19,6 @@ budgetModuleRouter.put("/update", budgetControllers.update);
 // route_path: /budget/get
 // route_description:
 //      route used to test get module
-budgetModuleRouter.get("/get", budgetControllers.get);
+budgetModuleRouter.get("/get/:userId", budgetControllers.get);
 
 module.exports = budgetModuleRouter;

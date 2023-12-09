@@ -4,7 +4,9 @@ const expensModuleConstants = require("../constants");
 const expenseModuleConstants = require("../constants");
 
 module.exports = (req) => {
+  const { id } = req.params;
+
   return {
-    userId: req.user_id,
+    userId: id,
   };
 };

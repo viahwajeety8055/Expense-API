@@ -12,5 +12,10 @@ module.exports = {
       statusCode: 400,
       message: "All fields required!",
     },
+    BGTE0002: {
+      code: "BGTE0002",
+      statusCode: 400,
+      message: "Enter correct user Id",
+    },
   },
 };

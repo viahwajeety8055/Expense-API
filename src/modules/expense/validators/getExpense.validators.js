@@ -4,11 +4,11 @@ const expensModuleConstants = require("../constants");
 const expenseModuleConstants = require("../constants");
 
 module.exports = (req) => {
-  const { id } = req.params;
   const { key } = req.query;
+  const { user_id } = req;
 
   return {
-    userId: id,
+    userId: user_id,
     key,
   };
 };

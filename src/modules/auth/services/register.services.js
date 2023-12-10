@@ -21,6 +21,15 @@ module.exports = async ({ name, email, password }) => {
     password: hashedPassword,
   });
 
+  const defaultBudget = {
+    budget: 500000,
+    redAlert: 150000,
+    totalExpense: 0,
+    userId: data.insertId,
+  };
+
+  await models.budget.create(defaultBudget);
+
   return {
     userId: data.insertId,
   };

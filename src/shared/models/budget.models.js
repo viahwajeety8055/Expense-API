@@ -5,7 +5,7 @@ const expenseModels = {};
 
 // @model-name: create
 // @model-desc: create a new budget
-expenseModels.create = async ({ budget, totalExpense, userId }) => {
+expenseModels.create = async ({ budget, totalExpense, userId, redAlert }) => {
   const result = await new sharedServices.mysqlServices()
     .insert(
       sharedConstants.dbTableNames.budget,

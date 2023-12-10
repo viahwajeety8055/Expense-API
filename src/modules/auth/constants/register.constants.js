@@ -14,7 +14,7 @@ module.exports = {
     },
     ARGE0002: {
       code: "ARGE0002",
-      statusCode: 302,
+      statusCode: 400,
       message: "Email Id is already used",
     },
     ARGE0003: {

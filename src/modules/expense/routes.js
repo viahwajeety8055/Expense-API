@@ -10,10 +10,10 @@ const expenseControllers = require("./controllers");
 expenseModuleRouter.post("/", expenseControllers.createExpense);
 
 // route_name: /:id
-// route_path: expense/:id
+// route_path: expense/
 // route_description:
 //      route used to get expense
-expenseModuleRouter.get("/:id", expenseControllers.getExpense);
+expenseModuleRouter.get("/", expenseControllers.getExpense);
 
 // route_name: /
 // route_path: expense/

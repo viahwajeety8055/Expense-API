@@ -42,7 +42,7 @@ authControllers.login = async (req, res, next) => {
 
 authControllers.getAllUser = async (req, res, next) => {
   try {
-    const data = await authServices.getAllUser({ id: req.params });
+    const data = await authServices.getAllUser({ id: req.params.id });
 
     next({
       result: data,

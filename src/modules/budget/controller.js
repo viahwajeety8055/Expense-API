@@ -28,8 +28,8 @@ budgetControllers.update = async (req, res, next) => {
 
     const data = await services.updateBudget({
       budget: validatedRequest.budget,
-      budgetLimit: validatedRequest.limit,
-      user_id: validatedRequest.userId,
+      redAlert: validatedRequest.redAlert,
+      userId: validatedRequest.userId,
     });
 
     next({

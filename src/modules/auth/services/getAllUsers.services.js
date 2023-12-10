@@ -4,16 +4,23 @@ const authModuleConstants = require("../constants");
 
 module.exports = async ({ id }) => {
   let users;
-  if (id) {
-    users = await models.user.read({ id });
-  }
+  const userWhereParam = {};
 
-  const usersInformation = users.map((user) => {
-    return {
-      userId: user.userId,
-      email: user.email,
-    };
-  });
+  if (id) {
+    userWhereParam.id = id;
+  }
+  users = await models.user.read(userWhereParam);
+
+  let usersInformation;
+  if (users.length) {
+    usersInformation = users.map((user) => {
+      return {
+        userId: user.userId,
+        name: user.name,
+        email: user.email,
+      };
+    });
+  }
 
   return usersInformation;
 };

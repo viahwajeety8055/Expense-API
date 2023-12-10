@@ -13,7 +13,7 @@ budgetModuleRouter.post("/create", budgetControllers.create);
 // route_path: /budget/update
 // route_description:
 //      route used to test update module
-budgetModuleRouter.put("/update", budgetControllers.update);
+budgetModuleRouter.patch("/update", budgetControllers.update);
 
 // route_name: get
 // route_path: /budget/get

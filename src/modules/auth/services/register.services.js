@@ -2,6 +2,8 @@ const { error } = require("shared/services");
 const models = require("shared/models");
 const sharedServices = require("shared/services");
 const authModuleConstants = require("../constants");
+const { appConfig } = require("shared/constants");
+const { app } = require("shared/constants/config.constants");
 
 module.exports = async ({ name, email, password }) => {
   // It will generate password hash
@@ -29,6 +31,12 @@ module.exports = async ({ name, email, password }) => {
   };
 
   await models.budget.create(defaultBudget);
+
+  const subject = "Successfully Registered";
+  const message = "Congratulations you have successully registered";
+
+  // Sending email to user
+  sharedServices.emailServices({ email, subject, message });
 
   return {
     userId: data.insertId,

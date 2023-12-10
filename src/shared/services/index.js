@@ -8,6 +8,7 @@ const error = require("shared/services/error.services");
 const awsServices = require("shared/services/aws.services");
 const fileServices = require("shared/services/file.services");
 const dateServices = require("shared/services/date.services");
+const emailServices = require("shared/services/mail.services");
 
 const sharedServices = {
   authServices,
@@ -20,6 +21,7 @@ const sharedServices = {
   awsServices,
   fileServices,
   dateServices,
+  emailServices,
 };
 
 module.exports = sharedServices;

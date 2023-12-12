@@ -11,7 +11,11 @@ module.exports = async ({ expenseId, userId }) => {
 
   const budget = await sharedModel.budget.read({ userId });
 
-  const updatedAmount = budget[0].totalExpense - expense[0].amount;
+  let updatedAmount = budget[0].totalExpense - expense[0].amount;
+
+  if (updatedAmount < 0) {
+    updatedAmount = 0;
+  }
 
   await sharedModel.budget.update({ totalExpense: updatedAmount }, { userId });
 

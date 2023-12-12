@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const { appConfig } = require("../constants");
 
 module.exports = ({ email, subject, message }) => {
   // Create a transporter using your SMTP details

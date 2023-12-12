@@ -21,7 +21,7 @@ module.exports = async ({ reason, amount, userId }) => {
     if (totalExpense > parseInt(budget[0].redAlert)) {
       const subject = "Alert!";
       const message = "Your total expenses have exceeded your alert limit.";
-      emailServices(user[0].email, subject, message);
+      emailServices({ email: user[0].email, subject, message });
     }
   }
 
